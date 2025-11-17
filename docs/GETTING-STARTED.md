@@ -25,7 +25,7 @@ So you want to start doing automation? Well, you came to the right place! Follow
 ```
 
 - _Tip for Windows users: After installing NVM, restart your local machine for the changes to take effect_
-- As of writing, the latest LTS version is `22.11.0`. We're QA... of course we always use the latest stable LTS instead of the latest version because we value stability, compatibility, and minimized exposure to breaking changes
+- As of writing, the latest LTS version is `22.11.0`. Please ensure your Node.js version matches this for compatibility. We're QA... of course we always use the latest stable LTS instead of the latest version because we value stability, compatibility, and minimized exposure to breaking changes
 - Configure Git on your local:
   - Download Git using this helpful guide: [Install Git](https://github.com/git-guides/install-git)
   - It doesn't really matter if you prefer using the command line or GUI, you won't be judged. Just _git_ it done :confused:
