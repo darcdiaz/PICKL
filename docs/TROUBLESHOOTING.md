@@ -1080,4 +1080,4 @@ If you're still experiencing issues:
 
 ---
 
-**Remember: The most effective debugging tool is still careful thought... couple with judisciously placed print statement. 🥒**
+**Remember: The most effective debugging tool is still careful thought... coupled with judiciously placed print statements. 🥒**
