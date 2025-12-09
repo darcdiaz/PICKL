@@ -98,9 +98,20 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
-          # Normalize line endings in hook files for Unix environments
-          # This prevents "command not found" errors from CRLF line endings
-          sed -i 's/\r$//' .husky/pre-commit .husky/commit-msg
+          # Verify hook files have LF line endings (not CRLF)
+          # CRLF line endings cause "command not found" errors in Unix
+          echo "Checking hook file line endings..."
+          if file .husky/pre-commit | grep -q CRLF || grep -q $'\r' .husky/pre-commit; then
+            echo "❌ Error: .husky/pre-commit has CRLF line endings"
+            echo "   Run 'npm run format' to fix line endings"
+            exit 1
+          fi
+          if file .husky/commit-msg | grep -q CRLF || grep -q $'\r' .husky/commit-msg; then
+            echo "❌ Error: .husky/commit-msg has CRLF line endings"
+            echo "   Run 'npm run format' to fix line endings"
+            exit 1
+          fi
+          echo "✅ Hook files have correct LF line endings"
 
           # Create a test file
           echo "// test file" > test-hook-verification.js

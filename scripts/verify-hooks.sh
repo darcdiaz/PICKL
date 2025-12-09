@@ -26,6 +26,13 @@ if [ ! -f ".husky/pre-commit" ]; then
 else
   echo "✅ pre-commit hook exists"
   
+  # Verify pre-commit hook has LF line endings
+  if grep -q $'\r' .husky/pre-commit 2>/dev/null; then
+    echo "❌ Error: pre-commit hook has CRLF line endings (should be LF)"
+    echo "   Run 'npm run format' to fix line endings"
+    errors=$((errors + 1))
+  fi
+  
   # Verify pre-commit hook content
   if ! grep -q "Direct commits to.*branch are not allowed" .husky/pre-commit; then
     echo "⚠️  Warning: pre-commit hook may be missing branch protection"
@@ -43,6 +50,13 @@ if [ ! -f ".husky/commit-msg" ]; then
   errors=$((errors + 1))
 else
   echo "✅ commit-msg hook exists"
+  
+  # Verify commit-msg hook has LF line endings
+  if grep -q $'\r' .husky/commit-msg 2>/dev/null; then
+    echo "❌ Error: commit-msg hook has CRLF line endings (should be LF)"
+    echo "   Run 'npm run format' to fix line endings"
+    errors=$((errors + 1))
+  fi
   
   # Verify commit-msg hook content
   if ! grep -q "conventional" .husky/commit-msg; then
