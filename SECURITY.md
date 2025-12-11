@@ -46,9 +46,9 @@ This project implements the following security measures:
 
 ### Automated Security Scanning
 
-- **CodeQL Analysis:** Automated code security scanning on every push and pull request
-- **npm Audit:** Dependency vulnerability scanning in CI/CD pipeline
-- **Dependabot:** Automated security updates for dependencies and GitHub Actions
+- **CodeQL Analysis:** Automated code security scanning runs weekly (Mondays at 00:00 UTC)
+- **npm Audit:** Dependency vulnerability scanning on every push and pull request
+- **Dependabot:** Automated security updates for dependencies and GitHub Actions (weekly checks)
 
 ### Development Practices
 
