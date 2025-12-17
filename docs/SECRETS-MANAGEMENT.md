@@ -628,18 +628,18 @@ Grant secrets the minimum necessary permissions:
 ❌ **Bad:**
 
 ```typescript
-console.log(`Logging in with username: ${username} and password: ${password}`)
+debug(`Logging in with username: ${username} and password: ${password}`)
 // Output: Logging in with username: admin@test.com and password: SecurePassword123!
 ```
 
 ✅ **Good:**
 
 ```typescript
-console.log(`Logging in with username: ${username}`)
+debug(`Logging in with username: ${username}`)
 // Output: Logging in with username: admin@test.com
 
 // Or mask sensitive data
-console.log(`Password length: ${password?.length} characters`)
+debug(`Password length: ${password?.length} characters`)
 // Output: Password length: 17 characters
 ```
 
@@ -696,7 +696,7 @@ function maskSecret(secret: string | undefined): string {
   return secret.slice(0, 2) + '***' + secret.slice(-2)
 }
 
-console.log(`API Key: ${maskSecret(process.env.API_KEY)}`)
+debug(`API Key: ${maskSecret(process.env.API_KEY)}`)
 // Output: API Key: ab***ef
 ```
 
@@ -879,7 +879,7 @@ If a secret is compromised:
    // In playwright.config.ts
    import * as dotenv from 'dotenv'
    dotenv.config()
-   console.log('BASE_URL:', process.env.BASE_URL) // Debug line
+   debug('BASE_URL:', process.env.BASE_URL) // Debug line
    ```
 
 ### Issue: Secrets work locally but fail in CI
