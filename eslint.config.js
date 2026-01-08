@@ -2,6 +2,10 @@ import eslint from '@eslint/js'
 import prettierConfig from 'eslint-config-prettier'
 import tseslint from 'typescript-eslint'
 
+// Constants for file patterns to ensure consistency
+const TS_FILES = ['**/*.ts']
+const TS_IGNORES = ['*.config.ts', 'scripts/generate-report.ts', 'types/*.d.ts']
+
 export default [
   // Base ESLint recommended rules
   eslint.configs.recommended,
@@ -15,19 +19,19 @@ export default [
   // TypeScript files WITH type checking
   ...tseslint.configs.recommendedTypeChecked.map(config => ({
     ...config,
-    files: ['**/*.ts'],
-    ignores: ['*.config.ts', 'scripts/generate-report.ts', 'types/*.d.ts'],
+    files: TS_FILES,
+    ignores: TS_IGNORES,
   })),
   ...tseslint.configs.stylisticTypeChecked.map(config => ({
     ...config,
-    files: ['**/*.ts'],
-    ignores: ['*.config.ts', 'scripts/generate-report.ts', 'types/*.d.ts'],
+    files: TS_FILES,
+    ignores: TS_IGNORES,
   })),
 
   // Custom rules for TypeScript files
   {
-    files: ['**/*.ts'],
-    ignores: ['*.config.ts', 'scripts/generate-report.ts', 'types/*.d.ts'],
+    files: TS_FILES,
+    ignores: TS_IGNORES,
     languageOptions: {
       parserOptions: {
         project: './tsconfig.json',
