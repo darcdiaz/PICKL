@@ -241,7 +241,6 @@ jobs:
         run: npm run test:coverage
         env:
           BASE_URL: https://the-internet.herokuapp.com
-          TAGS: not @skip
 
       - name: Check coverage thresholds
         run: npm run coverage:check
